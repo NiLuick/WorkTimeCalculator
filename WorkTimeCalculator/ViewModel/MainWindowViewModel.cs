@@ -61,4 +61,10 @@ public class MainWindowViewModel : ViewModelBase
 
         StatusText = string.Empty;
     }
+    
+    private static DateTime GetSystemBootTime()
+    {
+        var uptime = TimeSpan.FromMilliseconds(Environment.TickCount64);
+        return DateTime.Now - uptime;
+    }
 }
