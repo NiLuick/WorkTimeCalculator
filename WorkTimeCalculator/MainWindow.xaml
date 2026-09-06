@@ -5,8 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WorkTimeCalculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Work Time Calculator" Height="350" Width="300">
+    
     <Grid>
+        <TextBlock Text="Work Time Calculator" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center"
+                   VerticalAlignment="Top" Margin="0,50,0,0"/>
+        
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,101,0,0">
+            <RadioButton Content="Calculate Work Time" IsChecked="True" VerticalAlignment="Center" Margin="0,0,15,0"/>
+            <RadioButton Content="Calculate Go Home Time" VerticalAlignment="Center"/>
+        </StackPanel>
+        
+        <TextBlock Text="Start:" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,144,0,0"/>
+        <TextBox x:Name="StartTxt" Width="76" Height="24" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="116,139,0,0"/>
+
+        <Button Content="Turn on" Width="74" Height="24" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="199,139,0,0"/>
+        
+        <TextBlock Text="End:" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,180,0,0"/>
+        <TextBox x:Name="EndTxt" Width="76" Height="24" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="116,175,0,0"/>
+
+        <Button Content="Now" Width="74" Height="24" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="199,175,0,0"/>
+
+        <TextBlock Text="Overtime:" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="21,216,0,0"/>
+        <TextBox x:Name="OvertimeTxt" Width="76" Height="24" Text="00:00" IsReadOnly="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="116,211,0,0"/>
+
+        <Button Content="Calculate" Width="74" Height="24" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,259,0,0"/>
 
     </Grid>
 </Window>
