@@ -56,19 +56,24 @@ public class WorkTimeCalculationService
     }
  
     // Go-home time = start + target work time + breaks that fall inside the resulting window.
-    // Since adding break time can shift "end" further into (or newly into) a break, this is
-    // solved iteratively: recompute "end" until adding the currently overlapping breaks no
-    // longer changes it. Converges after at most a couple of iterations (2 fixed breaks).
-    public TimeSpan CalculateGoHomeTime(TimeSpan start)
+    public TimeSpan CalculateGoHomeTime(TimeSpan start) => CalculateEndTime(start, TimeSpan.Parse(_settings.WorkTime));
+ 
+    // Latest allowed end of the day = start + legal/configured maximum work time + breaks within that window.
+    public TimeSpan CalculateMaxEndTime(TimeSpan start) => CalculateEndTime(start, TimeSpan.Parse(_settings.MaximumWorkTime));
+ 
+    // Shared fixed-point calculation: end = start + targetDuration + breaks that fall within [start, end].
+    // Since adding a break can shift "end" further into (or newly into) a break, this is solved
+    // iteratively: recompute "end" until adding the currently overlapping breaks no longer
+    // changes it. Converges after at most a couple of iterations for 2 fixed breaks.
+    private TimeSpan CalculateEndTime(TimeSpan start, TimeSpan targetDuration)
     {
-        var workTime = TimeSpan.Parse(_settings.WorkTime);
-        var end = start + workTime;
+        var end = start + targetDuration;
  
         TimeSpan previousEnd;
         do
         {
             previousEnd = end;
-            end = start + workTime + GetBreakDurationWithin(start, end);
+            end = start + targetDuration + GetBreakDurationWithin(start, end);
         } while (end != previousEnd);
  
         return end;
