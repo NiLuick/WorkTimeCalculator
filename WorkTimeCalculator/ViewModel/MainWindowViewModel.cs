@@ -15,7 +15,7 @@ public class MainWindowViewModel : ViewModelBase
 
     public MainWindowViewModel()
     {
-        TurnOnCommand = new RelayCommand(() => StartText = DateTime.Now.ToString("HH:mm"));
+        TurnOnCommand = new RelayCommand(() => StartText = GetSystemBootTime().ToString("HH:mm"));
         NowCommand = new RelayCommand(() => EndText = DateTime.Now.ToString("HH:mm"));
         CalculateCommand = new RelayCommand(Calculate);
     }
