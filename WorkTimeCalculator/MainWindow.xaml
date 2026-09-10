@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WorkTimeCalculator"
         mc:Ignorable="d"
-        Title="Work Time Calculator" Height="350" Width="350">
+        Title="Work Time Calculator" Height="350" Width="350" ResizeMode="CanMinimize">
     
  <Grid>
         <TextBlock Text="Work Time Calculator" FontSize="22" FontWeight="Bold" HorizontalAlignment="Center"
